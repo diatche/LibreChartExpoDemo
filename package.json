@@ -1,5 +1,5 @@
 {
-  "name": "recyclergridviewdemo",
+  "name": "reactnativeanimatedchartexpodemo",
   "version": "0.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "watch:recyclergridview": "echo 'Watching recyclergridview for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../recyclergridview && yarn watch --copy \"$HERE/node_modules/recyclergridview/dist\"; popd"
+    "watch:recyclergridview": "echo 'Watching recyclergridview for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../recyclergridview && yarn watch --copy \"$HERE/node_modules/recyclergridview/dist\"; popd",
+    "watch:react-native-animated-chart": "echo 'Watching react-native-animated-chart for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../react-native-animated-chart && yarn watch --copy \"$HERE/node_modules/react-native-animated-chart/dist\"; popd"
   },
   "author": "Pavel Diatchenko <diatche@gmail.com>",
   "license": "Apache-2.0",
@@ -28,7 +29,8 @@
     "react-native-screens": "~2.10.1",
     "react-native-web": "^0.13.16",
     "react-remove-scroll": "^2.4.0",
-    "recyclergridview": "file:../recyclergridview"
+    "recyclergridview": "file:../recyclergridview",
+    "react-native-animated-chart": "file:../react-native-animated-chart"
   },
   "devDependencies": {
     "@types/react": "~16.9.35",

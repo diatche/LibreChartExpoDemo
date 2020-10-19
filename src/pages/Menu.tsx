@@ -12,10 +12,7 @@ const Menu = ({ navigation }: MenuProps) => {
     return (
         <FlatList
             data={[
-                { id: 'Gallery', title: 'Gallery' },
-                { id: 'Email', title: 'Email' },
                 { id: 'Chart', title: 'Chart' },
-                { id: 'CondensedDemo', title: 'Condensed Demo' },
             ]}
             renderItem={({ item }) => (
                 <Button
