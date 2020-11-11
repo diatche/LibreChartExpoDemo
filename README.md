@@ -1,5 +1,5 @@
-# ReactNativeAnimatedChartExpoDemo
-A cross-platform infinite 2D scrollable view with efficient cell recycling using Animated framework, without using a scroll view. See [RecyclerGridView](https://github.com/diatche/recyclergridview).
+# liberty-chart-expo-demo
+A cross-platform infinite 2D scrollable view with efficient cell recycling using Animated framework, without using a scroll view. See [recycler-grid-view](https://github.com/diatche/recycler-grid-view).
 
 ## Installation
 
@@ -18,15 +18,15 @@ npm i -g expo-cli
 
 ## Development
 
-If you clone `react-native-animated-chart` into the same parent folder as `ReactNativeAnimatedChartExpoDemo`, then you can run the following command to automatically apply local changes made to `react-native-animated-chart` on the fly:
+If you clone `liberty-chart` into the same parent folder as `liberty-chart-expo-demo`, then you can run the following command to automatically apply local changes made to `liberty-chart` on the fly:
 
 ```bash
-yarn run watch:react-native-animated-chart
+yarn run watch:liberty-chart
 ```
 
 
-If you clone `RecyclerGridView` into the same parent folder as `ReactNativeAnimatedChartExpoDemo`, then you can run the following command to automatically apply local changes made to `RecyclerGridView` on the fly:
+If you clone `recycler-grid-view` into the same parent folder as `liberty-chart-expo-demo`, then you can run the following command to automatically apply local changes made to `recycler-grid-view` on the fly:
 
 ```bash
-yarn run watch:recyclergridview
+yarn run watch:recycler-grid-view
 ```
