@@ -27,11 +27,12 @@ export default function ChartDemo() {
     ]);
 
     const applyScale = React.useCallback((coef: number) => {
-        let animation = Animated.spring(scale$, {
+        let animation = Animated.timing(scale$, {
             toValue: {
                 x: (scale$.x as any)._value * coef,
                 y: (scale$.y as any)._value * coef,
             },
+            duration: 400,
             useNativeDriver: false,
         });
         animation.start();

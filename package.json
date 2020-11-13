@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "watch:recycler-grid-view": "echo 'Watching recycler-grid-view for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../recycler-grid-view && yarn watch --copy \"$HERE/node_modules/recycler-grid-view/dist\"; popd",
+    "watch:evergrid": "echo 'Watching evergrid for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../evergrid && yarn watch --copy \"$HERE/node_modules/evergrid/dist\"; popd",
     "watch:liberty-chart": "echo 'Watching liberty-chart for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../liberty-chart && yarn watch --copy \"$HERE/node_modules/liberty-chart/dist\"; popd"
   },
   "author": "Pavel Diatchenko <diatche@gmail.com>",
@@ -27,7 +27,7 @@
     "react-native-screens": "~2.10.1",
     "react-native-web": "^0.13.16",
     "react-remove-scroll": "^2.4.0",
-    "recycler-grid-view": "file:../recycler-grid-view",
+    "evergrid": "file:../evergrid",
     "liberty-chart": "file:../liberty-chart"
   },
   "devDependencies": {
