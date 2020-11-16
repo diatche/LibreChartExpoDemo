@@ -46,6 +46,12 @@ export default function ChartDemo() {
                 scale={scale$}
                 dataSources={dataSources}
                 style={styles.chart}
+                axes={{
+                    bottomAxis: { show: true },
+                    topAxis: { show: false },
+                    rightAxis: { show: false },
+                    leftAxis: { show: false },
+                }}
             />
             <View style={styles.toolbar}>
                 <Button onPress={() => applyScale(1/1.6)}>Scale –</Button>
