@@ -10,7 +10,7 @@ import {
 const MainStack = createStackNavigator<MainStackList>();
 
 const Main = () => (
-    <MainStack.Navigator initialRouteName='Menu'>
+    <MainStack.Navigator initialRouteName='Chart'>
         <MainStack.Screen
             name='Menu'
             component={Menu}

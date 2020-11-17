@@ -49,7 +49,7 @@ export default function ChartDemo() {
                 axes={{
                     bottomAxis: { show: true },
                     topAxis: { show: false },
-                    rightAxis: { show: false },
+                    rightAxis: { show: true },
                     leftAxis: { show: false },
                 }}
             />
