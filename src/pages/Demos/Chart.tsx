@@ -52,6 +52,11 @@ export default function ChartDemo() {
                     rightAxis: { show: true },
                     leftAxis: { show: false },
                 }}
+                grid={{
+                    show: true,
+                    horizontalAxis: 'bottomAxis',
+                    verticalAxis: 'rightAxis',
+                }}
             />
             <View style={styles.toolbar}>
                 <Button onPress={() => applyScale(1/1.6)}>Scale –</Button>
