@@ -5,6 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 export type MainStackList = {
     Menu: undefined;
     Chart: undefined;
+    DateChart: undefined;
 };
 
 export type MenuNavigationProp = StackNavigationProp<

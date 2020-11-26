@@ -6,19 +6,26 @@ import {
     View,
 } from 'react-native';
 import {
-    Text,
     Button,
 } from 'react-native-paper';
 import {
     Chart,
     DataSource,
+    DateAxis,
 } from 'librechart';
 
 const kInitialScale = 50;
+const kInitialDateScale = 50;
+// const kInitialDateScale = moment.duration(1, 'day').asMilliseconds();
+
+const bottomAxis = new DateAxis('bottomAxis');
 
 export default function ChartDemo() {
     const chartRef = React.useRef<Chart>(null);
-    const scale$ = React.useRef(new Animated.ValueXY({ x: kInitialScale, y: -kInitialScale})).current;
+    const scale$ = React.useRef(new Animated.ValueXY({
+        x: kInitialDateScale,
+        y: -kInitialScale
+    })).current;
 
     const [dataSources] = React.useState(() => [
         new DataSource({
@@ -46,14 +53,8 @@ export default function ChartDemo() {
                 scale={scale$}
                 dataSources={dataSources}
                 style={styles.chart}
-                axes={{
-                    bottomAxis: { show: true },
-                    topAxis: { show: false },
-                    rightAxis: { show: true },
-                    leftAxis: { show: false },
-                }}
+                axes={{ bottomAxis, rightAxis: {} }}
                 grid={{
-                    show: true,
                     horizontalAxis: 'bottomAxis',
                     verticalAxis: 'rightAxis',
                 }}

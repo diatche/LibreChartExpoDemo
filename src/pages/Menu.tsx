@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { Button } from 'react-native-paper';
 import { MenuNavigationProp } from "./types";
 
@@ -12,7 +12,8 @@ const Menu = ({ navigation }: MenuProps) => {
     return (
         <FlatList
             data={[
-                { id: 'Chart', title: 'Chart' },
+                { id: 'Chart', title: 'Basic Chart' },
+                { id: 'DateChart', title: 'Date Chart' },
             ]}
             renderItem={({ item }) => (
                 <Button

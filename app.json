@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "liberty-chart-expo-demo",
-    "slug": "liberty-chart-expo-demo",
+    "name": "LibreChart Expo Demo",
+    "slug": "librechart-expo-demo",
     "version": "0.0.1",
     "orientation": "default",
     "icon": "./assets/icon.png",

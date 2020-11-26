@@ -1,5 +1,5 @@
-# liberty-chart-expo-demo
-A cross-platform infinite 2D scrollable view with efficient cell recycling using Animated framework, without using a scroll view. See [Liberty Chart](https://github.com/diatche/liberty-chart).
+# librechart-expo-demo
+A cross-platform infinite 2D scrollable view with efficient cell recycling using Animated framework, without using a scroll view. See [LibreChart](https://github.com/diatche/librechart).
 
 ## Installation
 
@@ -18,17 +18,17 @@ npm i -g expo-cli
 
 ## Development
 
-If you clone `liberty-chart` into the same parent folder as `liberty-chart-expo-demo`, then you can run the following command to automatically apply local changes made to `liberty-chart` on the fly:
+If you clone `librechart` into the same parent folder as `librechart-expo-demo`, then you can run the following command to automatically apply local changes made to `librechart` on the fly:
 
 ```bash
-yarn run watch:liberty-chart
+yarn run watch:librechart
 ```
 
 
-If you clone `evergrid` into the same parent folder as `liberty-chart-expo-demo`, then you can run the following command to automatically apply local changes made to `evergrid` on the fly:
+If you clone `evergrid` into the same parent folder as `librechart-expo-demo`, then you can run the following command to automatically apply local changes made to `evergrid` on the fly:
 
 ```bash
 yarn run watch:evergrid
 ```
 
-The above is only necessary if you want to test native builds. For web builds, using `yarn link liberty-chart` and `yarn link evergrid` is preferrable.
+The above is only necessary if you want to test native builds. For web builds, using `yarn link librechart` and `yarn link evergrid` is preferrable.

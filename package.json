@@ -1,5 +1,5 @@
 {
-  "name": "liberty-chart-expo-demo",
+  "name": "librechart-expo-demo",
   "version": "0.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "watch:evergrid": "echo 'Watching evergrid for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../evergrid && yarn watch --copy \"$HERE/node_modules/evergrid/dist\"; popd",
-    "watch:liberty-chart": "echo 'Watching liberty-chart for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../liberty-chart && yarn watch --copy \"$HERE/node_modules/liberty-chart/dist\"; popd"
+    "watch:librechart": "echo 'Watching librechart for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../librechart && yarn watch --copy \"$HERE/node_modules/librechart/dist\"; popd"
   },
   "author": "Pavel Diatchenko <diatche@gmail.com>",
   "license": "Apache-2.0",
@@ -28,7 +28,7 @@
     "react-native-web": "^0.13.16",
     "react-remove-scroll": "^2.4.0",
     "evergrid": "file:../evergrid",
-    "liberty-chart": "file:../liberty-chart"
+    "librechart": "file:../librechart"
   },
   "devDependencies": {
     "@types/react": "~16.9.35",

@@ -3611,7 +3611,7 @@ levenary@^1.1.1:
   dependencies:
     leven "^3.1.0"
 
-"liberty-chart@file:../liberty-chart":
+"librechart@file:../librechart":
   version "0.1.0"
   dependencies:
     "@types/lodash.debounce" "^4.0.6"
