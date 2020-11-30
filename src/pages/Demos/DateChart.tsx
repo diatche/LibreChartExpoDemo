@@ -9,16 +9,22 @@ import {
     Button,
 } from 'react-native-paper';
 import {
+    Axis,
     Chart,
     DataSource,
     DateAxis,
 } from 'librechart';
+import moment from 'moment';
+import Decimal from 'decimal.js';
 
 const kInitialScale = 50;
 const kInitialDateScale = 50;
 // const kInitialDateScale = moment.duration(1, 'day').asMilliseconds();
 
 const bottomAxis = new DateAxis('bottomAxis');
+const rightAxis = new Axis('rightAxis');
+
+const originDate = moment('2020-01-01');
 
 export default function ChartDemo() {
     const chartRef = React.useRef<Chart>(null);
@@ -29,7 +35,24 @@ export default function ChartDemo() {
 
     const [dataSources] = React.useState(() => [
         new DataSource({
-            data: [[0, 0], [1, 1], [2, 2]].map(p => ({ x: p[0], y: p[1] }))
+            data: [
+                [0, 0],
+                [1, 1],
+                [2, 2],
+                [10, 10],
+                [20, 20],
+                [30, 30],
+                [100, 100],
+                [200, 200],
+                [300, 300],
+            ].map(p => ({
+                x: originDate.clone().add(p[0], 'days'),
+                y: new Decimal(p[1]),
+            })),
+            scale: {
+                x: bottomAxis.scale,
+                y: rightAxis.scale,
+            },
         }),
     ]);
 
@@ -53,7 +76,10 @@ export default function ChartDemo() {
                 scale={scale$}
                 dataSources={dataSources}
                 style={styles.chart}
-                axes={{ bottomAxis, rightAxis: {} }}
+                axes={{
+                    bottomAxis,
+                    rightAxis,
+                }}
                 grid={{
                     horizontalAxis: 'bottomAxis',
                     verticalAxis: 'rightAxis',
