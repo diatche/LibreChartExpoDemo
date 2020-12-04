@@ -10,8 +10,9 @@ import {
 } from 'react-native-paper';
 import {
     Axis,
+    Colors,
     Chart,
-    DataSource,
+    LineDataSource,
     DateAxis,
     DateScale,
     ChartLayout,
@@ -45,25 +46,38 @@ export default function ChartDemo() {
             y: 0,
         },
         dataSources: [
-            new DataSource({
+            new LineDataSource({
                 data: [
                     [0, 0],
-                    [1, 1],
+                    [1, 1.2],
                     [2, 2],
-                    [10, 10],
-                    [20, 20],
+                    [10, 11],
+                    [20, 24],
                     [30, 30],
-                    [100, 100],
-                    [200, 200],
+                    [100, 90],
+                    [200, 240],
                     [300, 300],
                 ].map(p => ({
                     x: kOriginDate.clone().add(p[0], 'days'),
                     y: new Decimal(p[1]),
+                    style: {
+                        pointInnerRadius: Math.log(p[1] + 1) + 2,
+                        pointOuterRadius: Math.log(p[1] + 1) + 4,
+                    }
                 })),
-                scale: {
-                    x: bottomAxis.scale,
-                    y: rightAxis.scale,
+                axes: {
+                    x: bottomAxis,
+                    y: rightAxis,
                 },
+                style: {
+                    curve: 'monotoneX',
+                    pointInnerRadius: 2.5,
+                    pointOuterRadius: 4.5,
+                    strokeWidth: 2,
+                    strokeDashArray: [2, 4],
+                    strokeColor: Colors.indigo700,
+                    pointInnerColor: Colors.white,
+                }
             }),
         ],
         axes: {
