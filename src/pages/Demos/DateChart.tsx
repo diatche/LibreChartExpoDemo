@@ -14,8 +14,9 @@ import {
     Chart,
     LineDataSource,
     DateAxis,
-    DateScale,
+    ScaleLayout,
     ChartLayout,
+    DateScale,
 } from 'librechart';
 import moment from 'moment';
 import Decimal from 'decimal.js';
@@ -25,12 +26,15 @@ const kInitialDateScale = 50;
 // const kInitialDateScale = moment.duration(1, 'day').asMilliseconds();
 const kOriginDate = moment('2020-01-01');
 
-// const topAxis = new DateAxis('topAxis');
-const bottomAxis = new DateAxis('bottomAxis', {
-    // scale: new DateScale({ originDate }),
+const dateScaleLayout = new ScaleLayout({
+    scale: new DateScale({
+        originDate: kOriginDate,
+    }),
 });
+
+const topAxis = new DateAxis('topAxis');
+const bottomAxis = new DateAxis('bottomAxis');
 const rightAxis = new Axis('rightAxis');
-// const leftAxis = new Axis('leftAxis');
 
 export default function ChartDemo() {
     const chartRef = React.useRef<Chart>(null);
@@ -42,54 +46,65 @@ export default function ChartDemo() {
     const [chartLayout] = React.useState(() => new ChartLayout({
         scale: scale$,
         offset: {
-            x: -bottomAxis.scale.locationOfValue(kOriginDate).toNumber(),
+            x: -dateScaleLayout.scale.locationOfValue(kOriginDate).toNumber(),
             y: 0,
         },
-        dataSources: [
-            new LineDataSource({
-                data: [
-                    [0, 0],
-                    [1, 1.2],
-                    [2, 2],
-                    [10, 11],
-                    [20, 24],
-                    [30, 30],
-                    [100, 90],
-                    [200, 240],
-                    [300, 300],
-                ].map(p => ({
-                    x: kOriginDate.clone().add(p[0], 'days'),
-                    y: new Decimal(p[1]),
-                    style: {
-                        pointInnerRadius: Math.log(p[1] + 1) + 2,
-                        pointOuterRadius: Math.log(p[1] + 1) + 4,
-                    }
-                })),
+        plots: [
+            {
+                xLayout: dateScaleLayout,
+                dataSources: [
+                    new LineDataSource({
+                        data: [
+                            [0, 0],
+                            [1, 1.2],
+                            [2, 2],
+                            [10, 11],
+                            [20, 24],
+                            [30, 30],
+                            [100, 90],
+                            [200, 240],
+                            [300, 300],
+                        ].map(p => ({
+                            x: kOriginDate.clone().add(p[0], 'days'),
+                            y: new Decimal(p[1]),
+                            // style: {
+                            //     pointInnerRadius: Math.log(p[1] + 1) + 2,
+                            //     pointOuterRadius: Math.log(p[1] + 1) + 4,
+                            // }
+                        })),
+                        style: {
+                            // curve: 'monotoneX',
+                            pointInnerRadius: 2.5,
+                            pointOuterRadius: 4.5,
+                            strokeWidth: 2,
+                            // strokeDashArray: [2, 4],
+                            strokeColor: Colors.indigo700,
+                            pointInnerColor: Colors.white,
+                        }
+                    }),
+                ],
                 axes: {
-                    x: bottomAxis,
-                    y: rightAxis,
+                    topAxis,
+                    leftAxis: {},
+                    rightAxis,
+                    // bottomAxis,
                 },
-                style: {
-                    curve: 'monotoneX',
-                    pointInnerRadius: 2.5,
-                    pointOuterRadius: 4.5,
-                    strokeWidth: 2,
-                    strokeDashArray: [2, 4],
-                    strokeColor: Colors.indigo700,
-                    pointInnerColor: Colors.white,
-                }
-            }),
+                grid: {
+                    horizontal: true,
+                    vertical: true,
+                },
+            },
+            {
+                index: { x: 0, y: 1 },
+                xLayout: dateScaleLayout,
+                axes: {
+                    bottomAxis,
+                },
+                grid: {
+                    vertical: true,
+                },
+            },
         ],
-        axes: {
-            // topAxis,
-            bottomAxis,
-            rightAxis,
-            // leftAxis,
-        },
-        grid: {
-            horizontalAxis: 'bottomAxis',
-            verticalAxis: 'rightAxis',
-        },
     }));
 
     const applyScale = React.useCallback((coef: number) => {
