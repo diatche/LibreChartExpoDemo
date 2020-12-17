@@ -32,38 +32,48 @@ const dateScaleLayout = new ScaleLayout({
     }),
 });
 
-const topAxis = new DateAxis('topAxis');
+// const topAxis = new DateAxis('topAxis');
 const bottomAxis = new DateAxis('bottomAxis');
 const rightAxis = new Axis('rightAxis');
 
 export default function ChartDemo() {
     const chartRef = React.useRef<Chart>(null);
-    const scale$ = React.useRef(new Animated.ValueXY({
+    const dateOffset$ = React.useRef(new Animated.Value(0)).current;
+    const dateViewOffset$ = React.useRef(new Animated.Value(0)).current;
+    const mainScale$ = React.useRef(new Animated.ValueXY({
         x: kInitialDateScale,
-        y: -kInitialScale
+        y: -kInitialScale,
+    })).current;
+    const secondaryScale$ = React.useRef(new Animated.ValueXY({
+        x: mainScale$.x,
+        y: new Animated.Value(-kInitialScale),
     })).current;
 
     const [chartLayout] = React.useState(() => new ChartLayout({
-        scale: scale$,
-        offset: {
-            x: -dateScaleLayout.scale.locationOfValue(kOriginDate).toNumber(),
-            y: 0,
-        },
+        rowHeights: [
+            { flex: 3 },
+            { flex: 1 },
+            // 200,
+        ],
         plots: [
             {
+                offset: { x: dateOffset$ },
+                viewOffset: { x: dateViewOffset$ },
+                // ownsViewOffset: true,
+                scale: mainScale$,
                 xLayout: dateScaleLayout,
                 dataSources: [
                     new LineDataSource({
                         data: [
                             [0, 0],
                             [1, 1.2],
-                            [2, 2],
+                            [2, 1],
                             [10, 11],
                             [20, 24],
-                            [30, 30],
+                            [30, 20],
                             [100, 90],
                             [200, 240],
-                            [300, 300],
+                            [300, 100],
                         ].map(p => ({
                             x: kOriginDate.clone().add(p[0], 'days'),
                             y: new Decimal(p[1]),
@@ -84,8 +94,8 @@ export default function ChartDemo() {
                     }),
                 ],
                 axes: {
-                    topAxis,
-                    leftAxis: {},
+                    // topAxis,
+                    // leftAxis: {},
                     rightAxis,
                     // bottomAxis,
                 },
@@ -95,10 +105,35 @@ export default function ChartDemo() {
                 },
             },
             {
-                index: { x: 0, y: 1 },
+                offset: { x: dateOffset$ },
+                viewOffset: { x: dateViewOffset$ },
+                // ownsViewOffset: { x: false, y: true },
+                scale: secondaryScale$,
                 xLayout: dateScaleLayout,
+                dataSources: [
+                    new LineDataSource({
+                        data: [
+                            [0, 0],
+                            [1, 1],
+                            [2, 0],
+                            [3, 1],
+                        ].map(p => ({
+                            x: kOriginDate.clone().add(p[0], 'days'),
+                            y: new Decimal(p[1]),
+                        })),
+                        style: {
+                            curve: 'monotoneX',
+                            pointInnerRadius: 2.5,
+                            pointOuterRadius: 4.5,
+                            strokeWidth: 2,
+                            strokeColor: Colors.red700,
+                            pointInnerColor: Colors.white,
+                        }
+                    }),
+                ],
                 axes: {
                     bottomAxis,
+                    rightAxis: {},
                 },
                 grid: {
                     vertical: true,
@@ -108,14 +143,22 @@ export default function ChartDemo() {
     }));
 
     const applyScale = React.useCallback((coef: number) => {
-        let animation = Animated.timing(scale$, {
-            toValue: {
-                x: (scale$.x as any)._value * coef,
-                y: (scale$.y as any)._value * coef,
-            },
-            duration: 400,
-            useNativeDriver: false,
-        });
+        let animation = Animated.parallel([
+            Animated.timing(mainScale$, {
+                toValue: {
+                    x: (mainScale$.x as any)._value * coef,
+                    y: (mainScale$.y as any)._value,
+                    // y: (mainScale$.y as any)._value * coef,
+                },
+                duration: 400,
+                useNativeDriver: false,
+            }),
+            // Animated.timing(secondaryScale$.y, {
+            //     toValue: (mainScale$.y as any)._value * coef,
+            //     duration: 400,
+            //     useNativeDriver: false,
+            // }),
+        ])
         animation.start();
         return () => animation.stop();
     }, []);
