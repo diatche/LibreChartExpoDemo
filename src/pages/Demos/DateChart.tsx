@@ -19,6 +19,8 @@ import {
     DateScale,
     Hysteresis,
     LinearScale,
+    RangeDataSource,
+    AutoScaleController,
 } from 'librechart';
 import moment from 'moment';
 import Decimal from 'decimal.js';
@@ -66,13 +68,13 @@ export default function ChartDemo() {
                 // anchor: { x: 0.5, y: 0 },
                 xLayout: dateScaleLayout,
                 yLayout: new ScaleLayout({
-                    autoscale: {
+                    controller: new AutoScaleController({
                         anchor: 0,
                         viewPaddingAbs: [10, 10],
                         hysteresis: Hysteresis.withScale(new LinearScale({
                             constraints: { maxCount: 5 }
                         })),
-                    },
+                    }),
                 }),
                 verticalPanEnabled: false,
                 dataSources: [
@@ -88,14 +90,15 @@ export default function ChartDemo() {
                             [100, 90],
                             [200, 240],
                             [300, 100],
-                        ].map(p => ({
+                        ],
+                        transform: p => ({
                             x: kOriginDate.clone().add(p[0], 'days'),
                             y: new Decimal(p[1]),
                             // style: {
                             //     pointInnerRadius: Math.log(p[1] + 1) + 2,
                             //     pointOuterRadius: Math.log(p[1] + 1) + 4,
                             // }
-                        })),
+                        }),
                         style: {
                             // curve: 'monotoneX',
                             pointInnerRadius: 2.5,
@@ -126,41 +129,66 @@ export default function ChartDemo() {
                 anchor: { x: 0.5, y: 0 },
                 xLayout: dateScaleLayout,
                 yLayout: new ScaleLayout({
-                    autoscale: {
+                    controller: new AutoScaleController({
                         anchor: 0,
                         viewPaddingAbs: [10, 10],
                         hysteresis: Hysteresis.withScale(new LinearScale({
                             constraints: { maxCount: 3 }
                         })),
-                    }
+                    }),
                 }),
                 verticalPanEnabled: false,
                 dataSources: [
-                    new LineDataSource({
+                    new RangeDataSource({
                         data: [
-                            [-2, 0],
-                            [-1, 1],
-                            [0, 0],
-                            [1, 1],
-                            [1.5, 0.5],
-                            [7, 0.5],
-                            [8, 0.25],
-                            [9, 0.75],
-                            [10, 0.25],
-                            [11, 0.75],
-                        ].map(p => ({
+                            [-2, 0, 1, 0.1],
+                            [-1, 1, 1, 0.1],
+                            [0, 0, 1, 0.1],
+                            [1, 1, 1, 0.1],
+                            [1.5, 0.5, 1, 0.1],
+                            [7, 0.5, 1, 0.1],
+                            [8, 0.25, 1, 0.1],
+                            [9, 0.75, 1, 0.1],
+                            [10, 0.25, 1, 0.1],
+                            [11, 0.75, 1, 0.1],
+                        ],
+                        transform: p => ({
                             x: kOriginDate.clone().add(p[0], 'days'),
                             y: new Decimal(p[1]),
-                        })),
+                            x2: kOriginDate.clone().add(p[0] + p[2], 'days'),
+                            y2: new Decimal(p[1] + p[3]),
+                        }),
                         style: {
-                            // curve: 'monotoneX',
-                            pointInnerRadius: 2.5,
-                            pointOuterRadius: 4.5,
-                            strokeWidth: 2,
-                            strokeColor: Colors.red700,
-                            pointInnerColor: Colors.white,
+                            fillColor: Colors.red700,
+                            cornerRadius: 5,
                         }
                     }),
+                    // new LineDataSource({
+                    //     data: [
+                    //         [-2, 0],
+                    //         [-1, 1],
+                    //         [0, 0],
+                    //         [1, 1],
+                    //         [1.5, 0.5],
+                    //         [7, 0.5],
+                    //         [8, 0.25],
+                    //         [9, 0.75],
+                    //         [10, 0.25],
+                    //         [11, 0.75],
+                    //     ],
+                    //     transform: p => ({
+                    //         x: kOriginDate.clone().add(p[0], 'days'),
+                    //         y: new Decimal(p[1]),
+                    //     }),
+                    //     style: {
+                    //         // curve: 'monotoneX',
+                    //         pointInnerRadius: 2.5,
+                    //         pointOuterRadius: 4.5,
+                    //         strokeWidth: 2,
+                    //         strokeColor: Colors.red700,
+                    //         pointInnerColor: Colors.white,
+                    //     }
+                    // }),
                 ],
                 axes: {
                     bottomAxis,
