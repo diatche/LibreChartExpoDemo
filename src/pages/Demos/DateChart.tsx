@@ -17,6 +17,8 @@ import {
     ScaleLayout,
     ChartLayout,
     DateScale,
+    Hysteresis,
+    LinearScale,
 } from 'librechart';
 import moment from 'moment';
 import Decimal from 'decimal.js';
@@ -61,13 +63,25 @@ export default function ChartDemo() {
                 viewOffset: { x: dateViewOffset$ },
                 // ownsViewOffset: true,
                 scale: mainScale$,
+                // anchor: { x: 0.5, y: 0 },
                 xLayout: dateScaleLayout,
+                yLayout: new ScaleLayout({
+                    autoscale: {
+                        anchor: 0,
+                        viewPaddingAbs: [10, 10],
+                        hysteresis: Hysteresis.withScale(new LinearScale({
+                            constraints: { maxCount: 5 }
+                        })),
+                    },
+                }),
+                verticalPanEnabled: false,
                 dataSources: [
                     new LineDataSource({
                         data: [
                             [0, 0],
                             [1, 1.2],
                             [2, 1],
+                            [5, 4],
                             [10, 11],
                             [20, 24],
                             [30, 20],
@@ -109,20 +123,37 @@ export default function ChartDemo() {
                 viewOffset: { x: dateViewOffset$ },
                 // ownsViewOffset: { x: false, y: true },
                 scale: secondaryScale$,
+                anchor: { x: 0.5, y: 0 },
                 xLayout: dateScaleLayout,
+                yLayout: new ScaleLayout({
+                    autoscale: {
+                        anchor: 0,
+                        viewPaddingAbs: [10, 10],
+                        hysteresis: Hysteresis.withScale(new LinearScale({
+                            constraints: { maxCount: 3 }
+                        })),
+                    }
+                }),
+                verticalPanEnabled: false,
                 dataSources: [
                     new LineDataSource({
                         data: [
+                            [-2, 0],
+                            [-1, 1],
                             [0, 0],
                             [1, 1],
-                            [2, 0],
-                            [3, 1],
+                            [1.5, 0.5],
+                            [7, 0.5],
+                            [8, 0.25],
+                            [9, 0.75],
+                            [10, 0.25],
+                            [11, 0.75],
                         ].map(p => ({
                             x: kOriginDate.clone().add(p[0], 'days'),
                             y: new Decimal(p[1]),
                         })),
                         style: {
-                            curve: 'monotoneX',
+                            // curve: 'monotoneX',
                             pointInnerRadius: 2.5,
                             pointOuterRadius: 4.5,
                             strokeWidth: 2,
