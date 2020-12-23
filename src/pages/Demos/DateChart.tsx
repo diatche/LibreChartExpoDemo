@@ -21,6 +21,7 @@ import {
     LinearScale,
     RangeDataSource,
     AutoScaleController,
+    FixedScaleController,
 } from 'librechart';
 import moment from 'moment';
 import Decimal from 'decimal.js';
@@ -129,38 +130,38 @@ export default function ChartDemo() {
                 anchor: { x: 0.5, y: 0 },
                 xLayout: dateScaleLayout,
                 yLayout: new ScaleLayout({
-                    controller: new AutoScaleController({
-                        anchor: 0,
+                    controller: new FixedScaleController({
+                        min: 0,
+                        max: 1,
                         viewPaddingAbs: [10, 10],
-                        hysteresis: Hysteresis.withScale(new LinearScale({
-                            constraints: { maxCount: 3 }
-                        })),
                     }),
                 }),
                 verticalPanEnabled: false,
                 dataSources: [
                     new RangeDataSource({
                         data: [
-                            [-2, 0, 1, 0.1],
-                            [-1, 1, 1, 0.1],
-                            [0, 0, 1, 0.1],
-                            [1, 1, 1, 0.1],
-                            [1.5, 0.5, 1, 0.1],
-                            [7, 0.5, 1, 0.1],
-                            [8, 0.25, 1, 0.1],
-                            [9, 0.75, 1, 0.1],
-                            [10, 0.25, 1, 0.1],
-                            [11, 0.75, 1, 0.1],
+                            [-2, 0, 1],
+                            [-1, 1, 1],
+                            [0, 0, 1],
+                            [1, 1, 1],
+                            [1.5, 0.5, 1],
+                            [7, 0.5, 1],
+                            [8, 0.25, 1],
+                            [9, 0.75, 1],
+                            [10, 0.25, 1],
+                            [11, 0.75, 1],
                         ],
                         transform: p => ({
                             x: kOriginDate.clone().add(p[0], 'days'),
                             y: new Decimal(p[1]),
                             x2: kOriginDate.clone().add(p[0] + p[2], 'days'),
-                            y2: new Decimal(p[1] + p[3]),
+                            y2: new Decimal(p[1]),
                         }),
                         style: {
+                            strokeColor: Colors.red700,
+                            strokeWidth: 4,
                             fillColor: Colors.red700,
-                            cornerRadius: 5,
+                            cornerRadius: 4,
                         }
                     }),
                     // new LineDataSource({
