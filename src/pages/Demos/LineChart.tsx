@@ -2,6 +2,7 @@ import React from 'react';
 import {
     Animated,
     Platform,
+    SafeAreaView,
     StyleSheet,
     View,
 } from 'react-native';
@@ -93,7 +94,7 @@ export default function ChartDemo() {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Chart
                 ref={chartRef}
                 layout={chartLayout}
@@ -103,7 +104,7 @@ export default function ChartDemo() {
                 <Button onPress={() => applyScale(1/1.6)}>Scale –</Button>
                 <Button onPress={() => applyScale(1.6)}>Scale +</Button>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 

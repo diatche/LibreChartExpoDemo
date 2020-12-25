@@ -20,6 +20,7 @@ import {
     PlotLayout,
 } from 'librechart';
 import Decimal from 'decimal.js';
+import { SafeAreaView } from 'react-native';
 
 const kCategories = ['A', 'B', 'C'];
 const kInitialScale = 50;
@@ -98,13 +99,13 @@ export default function BarChart() {
     }));
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Chart
                 ref={chartRef}
                 layout={chartLayout}
                 style={styles.chart}
             />
-        </View>
+        </SafeAreaView>
     );
 }
 
