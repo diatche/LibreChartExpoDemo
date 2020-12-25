@@ -13,7 +13,7 @@ const Menu = ({ navigation }: MenuProps) => {
         <FlatList
             data={[
                 { id: 'BarChart', title: 'Bar Chart' },
-                // { id: 'LineChart', title: 'Line Chart' },
+                { id: 'LineChart', title: 'Line Chart' },
                 { id: 'DateChart', title: 'Date Chart' },
             ]}
             renderItem={({ item }) => (
