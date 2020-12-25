@@ -4,7 +4,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 export type MainStackList = {
     Menu: undefined;
-    Chart: undefined;
+    BarChart: undefined;
+    LineChart: undefined;
     DateChart: undefined;
 };
 

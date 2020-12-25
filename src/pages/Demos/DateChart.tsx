@@ -19,7 +19,7 @@ import {
     DateScale,
     Hysteresis,
     LinearScale,
-    RangeDataSource,
+    RectDataSource,
     AutoScaleController,
     FixedScaleController,
 } from 'librechart';
@@ -37,9 +37,9 @@ const dateScaleLayout = new ScaleLayout({
     }),
 });
 
-// const topAxis = new DateAxis('topAxis');
-const bottomAxis = new DateAxis('bottomAxis');
-const rightAxis = new Axis('rightAxis');
+// const topAxis = new DateAxis({ axisType: 'topAxis' });
+const bottomAxis = new DateAxis({ axisType: 'bottomAxis' });
+const rightAxis = new Axis({ axisType: 'rightAxis' });
 
 export default function ChartDemo() {
     const chartRef = React.useRef<Chart>(null);
@@ -133,12 +133,12 @@ export default function ChartDemo() {
                     controller: new FixedScaleController({
                         min: 0,
                         max: 1,
-                        viewPaddingAbs: [10, 10],
+                        viewPaddingRel: 0.1,
                     }),
                 }),
                 verticalPanEnabled: false,
                 dataSources: [
-                    new RangeDataSource({
+                    new RectDataSource({
                         data: [
                             [-2, 0, 1],
                             [-1, 1, 1],

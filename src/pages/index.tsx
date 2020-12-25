@@ -2,7 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Menu from './Menu';
-import Chart from './Demos/Chart';
+import BarChart from './Demos/BarChart';
+import LineChart from './Demos/LineChart';
 import DateChart from './Demos/DateChart';
 import {
     MainStackList,
@@ -11,7 +12,7 @@ import {
 const MainStack = createStackNavigator<MainStackList>();
 
 const Main = () => (
-    <MainStack.Navigator initialRouteName='DateChart'>
+    <MainStack.Navigator initialRouteName='Menu'>
         <MainStack.Screen
             name='Menu'
             component={Menu}
@@ -20,8 +21,12 @@ const Main = () => (
             }}
         />
         <MainStack.Screen
-            name='Chart'
-            component={Chart}
+            name='BarChart'
+            component={BarChart}
+        />
+        <MainStack.Screen
+            name='LineChart'
+            component={LineChart}
         />
         <MainStack.Screen
             name='DateChart'
