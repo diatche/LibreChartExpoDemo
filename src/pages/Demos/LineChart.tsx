@@ -26,11 +26,6 @@ export default function ChartDemo() {
     })).current;
 
     const [chartLayout] = React.useState(() => new ChartLayout({
-        rowHeights: [
-            { flex: 3 },
-            { flex: 1 },
-            // 200,
-        ],
         plots: [
             {
                 scale: mainScale$,
@@ -53,14 +48,21 @@ export default function ChartDemo() {
                             y: new Decimal(p[1]),
                         }),
                         style: {
-                            // curve: 'monotoneX',
                             pointInnerRadius: 2.5,
                             pointOuterRadius: 4.5,
                             strokeWidth: 2,
-                            // strokeDashArray: [2, 4],
                             strokeColor: Colors.indigo700,
                             pointInnerColor: Colors.white,
-                        }
+                        },
+                        itemStyle: item => {
+                            if (item[1] < 10) {
+                                return { strokeColor: Colors.indigo700 };
+                            } else if (item[1] < 100) {
+                                return { strokeColor: Colors.yellow600 };
+                            } else {
+                                return { strokeColor: Colors.deepOrange600 };
+                            }
+                        },
                     }),
                 ],
                 axes: {
@@ -80,17 +82,11 @@ export default function ChartDemo() {
             Animated.timing(mainScale$, {
                 toValue: {
                     x: (mainScale$.x as any)._value * coef,
-                    y: (mainScale$.y as any)._value,
-                    // y: (mainScale$.y as any)._value * coef,
+                    y: (mainScale$.y as any)._value * coef,
                 },
                 duration: 400,
                 useNativeDriver: false,
             }),
-            // Animated.timing(secondaryScale$.y, {
-            //     toValue: (mainScale$.y as any)._value * coef,
-            //     duration: 400,
-            //     useNativeDriver: false,
-            // }),
         ])
         animation.start();
         return () => animation.stop();
@@ -106,15 +102,6 @@ export default function ChartDemo() {
             <View style={styles.toolbar}>
                 <Button onPress={() => applyScale(1/1.6)}>Scale –</Button>
                 <Button onPress={() => applyScale(1.6)}>Scale +</Button>
-                {/* <Button
-                    mode='contained'
-                    onPress={() => chartRef.current?.scrollToLocation({
-                        location: { x: 0, y: 0 },
-                        animated: true,
-                    })}
-                >
-                    Origin
-                </Button> */}
             </View>
         </View>
     );
