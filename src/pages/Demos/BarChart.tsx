@@ -41,6 +41,7 @@ export default function BarChart() {
         plots: [
             new PlotLayout<Decimal, Decimal>({
                 scale: mainScale$,
+                anchor: { x: 0.5, y: 0 },
                 xLayout: new ScaleLayout({
                     scale: new DiscreteScale(),
                     controller: new FixedScaleController({
