@@ -74,7 +74,16 @@ export default function BarChart() {
                             fillColor: Colors.blue500,
                             topLeftCornerRadius: Animated.multiply(0.08, mainScale$.x),
                             topRightCornerRadius: Animated.multiply(0.08, mainScale$.x),
-                        }
+                        },
+                        itemStyle: (item, i) => {
+                            return {
+                                fillColor: [
+                                    Colors.blue500,
+                                    Colors.green600,
+                                    Colors.yellow600,
+                                ][i % 3]
+                            };
+                        },
                     }),
                 ],
                 axes: {
