@@ -1,9 +1,7 @@
 import React from 'react';
 import {
     Animated,
-    Platform,
     StyleSheet,
-    View,
 } from 'react-native';
 import {
     Axis,
@@ -19,7 +17,6 @@ import {
     FixedScaleController,
     PlotLayout,
 } from 'librechart';
-import Decimal from 'decimal.js';
 import { SafeAreaView } from 'react-native';
 
 const kCategories = ['A', 'B', 'C'];
@@ -27,7 +24,7 @@ const kInitialScale = 50;
 
 const bottomAxis = new Axis({
     axisType: 'bottomAxis',
-    getTickLabel: tick => kCategories[tick.value.toNumber()] || '',
+    getTickLabel: tick => kCategories[tick.value] || '',
 });
 
 export default function BarChart() {
@@ -39,7 +36,7 @@ export default function BarChart() {
 
     const [chartLayout] = React.useState(() => new ChartLayout({
         plots: [
-            new PlotLayout<Decimal, Decimal>({
+            new PlotLayout({
                 scale: mainScale$,
                 anchor: { x: 0.5, y: 0 },
                 xLayout: new ScaleLayout({
@@ -67,10 +64,10 @@ export default function BarChart() {
                             [2, 5],
                         ],
                         transform: p => ({
-                            x: new Decimal(p[0] - 0.4),
-                            y: new Decimal(0),
-                            x2: new Decimal(p[0] + 0.4),
-                            y2: new Decimal(p[1]),
+                            x: p[0] - 0.4,
+                            y: 0,
+                            x2: p[0] + 0.4,
+                            y2: p[1],
                         }),
                         style: {
                             fillColor: Colors.blue500,

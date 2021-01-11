@@ -15,7 +15,6 @@ import {
     LineDataSource,
     ChartLayout,
 } from 'librechart';
-import Decimal from 'decimal.js';
 
 const kInitialScale = 50;
 
@@ -45,8 +44,8 @@ export default function ChartDemo() {
                             [300, 100],
                         ],
                         transform: p => ({
-                            x: new Decimal(p[0]),
-                            y: new Decimal(p[1]),
+                            x: p[0],
+                            y: p[1],
                         }),
                         style: {
                             pointInnerRadius: 2.5,

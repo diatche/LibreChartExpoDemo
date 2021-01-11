@@ -25,7 +25,6 @@ import {
     FixedScaleController,
 } from 'librechart';
 import moment from 'moment';
-import Decimal from 'decimal.js';
 
 const kInitialScale = 50;
 const kInitialDateScale = 50;
@@ -95,7 +94,7 @@ export default function ChartDemo() {
                         ],
                         transform: p => ({
                             x: kOriginDate.clone().add(p[0], 'days'),
-                            y: new Decimal(p[1]),
+                            y: p[1],
                             // style: {
                             //     pointInnerRadius: Math.log(p[1] + 1) + 2,
                             //     pointOuterRadius: Math.log(p[1] + 1) + 4,
@@ -154,9 +153,9 @@ export default function ChartDemo() {
                         ],
                         transform: p => ({
                             x: kOriginDate.clone().add(p[0], 'days'),
-                            y: new Decimal(p[1]),
+                            y: p[1],
                             x2: kOriginDate.clone().add(p[0] + p[2], 'days'),
-                            y2: new Decimal(p[1]),
+                            y2: p[1],
                         }),
                         style: {
                             strokeColor: Colors.red700,
@@ -180,7 +179,7 @@ export default function ChartDemo() {
                     //     ],
                     //     transform: p => ({
                     //         x: kOriginDate.clone().add(p[0], 'days'),
-                    //         y: new Decimal(p[1]),
+                    //         y: p[1],
                     //     }),
                     //     style: {
                     //         // curve: 'monotoneX',
