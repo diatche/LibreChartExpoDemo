@@ -12,15 +12,15 @@
     "watch:librechart": "echo 'Watching librechart for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../librechart && yarn watch --copy \"$HERE/node_modules/librechart/dist\"; popd"
   },
   "author": "Pavel Diatchenko <diatche@gmail.com>",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
-    "evergrid": "git+https://github.com/diatche/evergrid.git",
+    "evergrid": "*",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
-    "librechart": "git+https://github.com/diatche/librechart.git",
+    "librechart": "*",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
