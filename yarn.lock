@@ -2597,7 +2597,7 @@ eventemitter3@^3.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
-evergrid@*:
+evergrid@>=0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/evergrid/-/evergrid-0.0.1.tgz#dc0a3c519485eb34cdad87350f8332f22793e84b"
   integrity sha512-ApifiHj9/zS77iKgHpFBfbaJj9fAPMui+Vq0fLCpfsqC8ugMSijHpoUJhB8Wta1cGQCzXWhAwtT98fKB9cpmOA==
@@ -3752,7 +3752,7 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-librechart@*:
+librechart@>=0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.5.0.tgz#29cde5a33341c04d959356307ff7a87ace060491"
   integrity sha512-OMzk00ry7FmEC4ZM50a8RMRVgiHKxbavUbHxNKw7OQqvvXsKaEU59A+iGAm2Nk4FpUuVDf6ccZMaPoqSSNOuAA==

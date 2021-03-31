@@ -54,15 +54,15 @@ export default function ChartDemo() {
                             strokeColor: Colors.indigo700,
                             pointInnerColor: Colors.white,
                         },
-                        itemStyle: item => {
-                            if (item[1] < 10) {
-                                return { strokeColor: Colors.indigo700 };
-                            } else if (item[1] < 100) {
-                                return { strokeColor: Colors.yellow600 };
-                            } else {
-                                return { strokeColor: Colors.deepOrange600 };
-                            }
-                        },
+                        // itemStyle: item => {
+                        //     if (item[1] < 10) {
+                        //         return { strokeColor: Colors.indigo700 };
+                        //     } else if (item[1] < 100) {
+                        //         return { strokeColor: Colors.yellow600 };
+                        //     } else {
+                        //         return { strokeColor: Colors.deepOrange600 };
+                        //     }
+                        // },
                     }),
                 ],
                 axes: {
