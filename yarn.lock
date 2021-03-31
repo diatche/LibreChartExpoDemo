@@ -2566,9 +2566,10 @@ eventemitter3@^3.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
-"evergrid@git+https://github.com/diatche/evergrid.git":
+evergrid@*:
   version "0.0.1"
-  resolved "git+https://github.com/diatche/evergrid.git#39621f449fb2f18e486aaf563673f0331e495600"
+  resolved "https://registry.yarnpkg.com/evergrid/-/evergrid-0.0.1.tgz#dc0a3c519485eb34cdad87350f8332f22793e84b"
+  integrity sha512-ApifiHj9/zS77iKgHpFBfbaJj9fAPMui+Vq0fLCpfsqC8ugMSijHpoUJhB8Wta1cGQCzXWhAwtT98fKB9cpmOA==
 
 exec-sh@^0.3.2:
   version "0.3.4"
@@ -3700,15 +3701,15 @@ levenary@^1.1.1:
   dependencies:
     leven "^3.1.0"
 
-"librechart@git+https://github.com/diatche/librechart.git":
-  version "0.1.0"
-  resolved "git+https://github.com/diatche/librechart.git#8b33745cf344e4908cbbce7137e29541b320169a"
+librechart@*:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.2.0.tgz#523dc13277f9173c743c1f347c056599fbe4b0d1"
+  integrity sha512-Do8HAM2O2alq5rKRU446jIOF5Ws81L1Yzh4p0o5wtp6+6iiv7xzbfajw/0lpGxKf4+DhBlQJULdTA1YIRNzeBg==
   dependencies:
     "@types/d3-shape" "^2.0.0"
     "@types/lodash.debounce" "^4.0.6"
     "@types/lodash.ismatchwith" "^4.4.6"
     d3-shape "^2.0.0"
-    decimal.js "^10.2.1"
     lodash.debounce "^4.0.8"
     lodash.ismatchwith "^4.4.0"
     moment "^2.29.1"
