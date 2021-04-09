@@ -28,7 +28,9 @@ export default function ChartDemo() {
     const [chartLayout] = React.useState(() => new ChartLayout({
         plots: [
             {
+                offset: { x: 1, y: 1 },
                 scale: mainScale$,
+                anchor: { x: 0, y: 0},
                 dataSources: [
                     new LineDataSource({
                         data: [

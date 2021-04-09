@@ -1,20 +1,21 @@
 import React from 'react';
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
-import { MenuNavigationProp } from "./types";
+import { MenuNavigationProp } from './types';
 
 export interface MenuProps {
     navigation: MenuNavigationProp;
 }
 
 const Menu = ({ navigation }: MenuProps) => {
-
     return (
         <FlatList
             data={[
                 { id: 'BarChart', title: 'Bar Chart' },
                 { id: 'LineChart', title: 'Line Chart' },
+                { id: 'AutoScaleLineChart', title: 'Auto Scale Line Chart' },
                 { id: 'DateChart', title: 'Date Chart' },
+                { id: 'SubplotChart', title: 'Subplot Chart' },
             ]}
             renderItem={({ item }) => (
                 <Button

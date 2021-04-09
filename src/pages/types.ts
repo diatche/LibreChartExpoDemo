@@ -6,11 +6,9 @@ export type MainStackList = {
     Menu: undefined;
     BarChart: undefined;
     LineChart: undefined;
+    AutoScaleLineChart: undefined;
     DateChart: undefined;
+    SubplotChart: undefined;
 };
 
-export type MenuNavigationProp = StackNavigationProp<
-    MainStackList,
-    'Menu'
->;
-
+export type MenuNavigationProp = StackNavigationProp<MainStackList, 'Menu'>;

@@ -5,9 +5,9 @@ import Menu from './Menu';
 import BarChart from './Demos/BarChart';
 import LineChart from './Demos/LineChart';
 import DateChart from './Demos/DateChart';
-import {
-    MainStackList,
-} from './types';
+import { MainStackList } from './types';
+import AutoScaleLineChart from './Demos/AutoScaleLineChart';
+import SubplotChart from './Demos/SubplotChart';
 
 const MainStack = createStackNavigator<MainStackList>();
 
@@ -20,18 +20,14 @@ const Main = () => (
                 title: 'LibreChart',
             }}
         />
+        <MainStack.Screen name='BarChart' component={BarChart} />
+        <MainStack.Screen name='LineChart' component={LineChart} />
         <MainStack.Screen
-            name='BarChart'
-            component={BarChart}
+            name='AutoScaleLineChart'
+            component={AutoScaleLineChart}
         />
-        <MainStack.Screen
-            name='LineChart'
-            component={LineChart}
-        />
-        <MainStack.Screen
-            name='DateChart'
-            component={DateChart}
-        />
+        <MainStack.Screen name='DateChart' component={DateChart} />
+        <MainStack.Screen name='SubplotChart' component={SubplotChart} />
     </MainStack.Navigator>
 );
 
