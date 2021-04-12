@@ -86,7 +86,7 @@ export default function BarChart() {
                     }),
                 ],
                 axes: {
-                    leftAxis: {},
+                    leftAxis: true,
                     bottomAxis,
                 },
                 grid: {

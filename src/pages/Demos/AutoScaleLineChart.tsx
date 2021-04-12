@@ -86,8 +86,8 @@ export default function ChartDemo() {
                             }),
                         ],
                         axes: {
-                            bottomAxis: {},
-                            leftAxis: {},
+                            bottomAxis: true,
+                            leftAxis: true,
                         },
                         grid: {
                             horizontal: true,

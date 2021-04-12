@@ -1,45 +1,45 @@
 {
-  "name": "librechart-expo-demo",
-  "version": "0.0.1",
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject",
-    "watch:evergrid": "echo 'Watching evergrid for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../evergrid && yarn watch --copy \"$HERE/node_modules/evergrid/dist\"; popd",
-    "watch:librechart": "echo 'Watching librechart for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../librechart && yarn watch --copy \"$HERE/node_modules/librechart/dist\"; popd"
-  },
-  "author": "Pavel Diatchenko <diatche@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/native": "^5.9.3",
-    "@react-navigation/stack": "^5.14.3",
-    "@types/react": "~16.9.35",
-    "decimal.js": "^10.2.1",
-    "evergrid": ">=0.0.1",
-    "expo": "^40.0.0",
-    "expo-status-bar": "~1.0.3",
-    "librechart": ">=0.5.0",
-    "moment": "^2.29.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
-    "react-native-gesture-handler": "~1.8.0",
-    "react-native-paper": "^4.7.2",
-    "react-native-safe-area-context": "3.1.9",
-    "react-native-screens": "~2.15.2",
-    "react-native-svg": "12.1.0",
-    "react-native-web": "~0.13.12",
-    "react-native-webview": "11.0.0",
-    "react-remove-scroll": "^2.4.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@types/react-dom": "~16.9.8",
-    "@types/react-native": "~0.63.2",
-    "typescript": "~4.0.0"
-  }
+    "name": "librechart-expo-demo",
+    "version": "0.0.1",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+        "start": "expo start",
+        "android": "expo start --android",
+        "ios": "expo start --ios",
+        "web": "expo start --web",
+        "eject": "expo eject",
+        "watch:evergrid": "echo 'Watching evergrid for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../evergrid && yarn watch --copy \"$HERE/node_modules/evergrid/dist\"; popd",
+        "watch:librechart": "echo 'Watching librechart for changes and applying automatically...' && HERE=\"$(pwd)\"; pushd ../librechart && yarn watch --copy \"$HERE/node_modules/librechart/dist\"; popd"
+    },
+    "author": "Pavel Diatchenko <diatche@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@react-native-community/masked-view": "0.1.10",
+        "@react-navigation/native": "^5.9.3",
+        "@react-navigation/stack": "^5.14.3",
+        "@types/react": "~16.9.35",
+        "decimal.js": "^10.2.1",
+        "evergrid": ">=0.0.1",
+        "expo": "^40.0.0",
+        "expo-status-bar": "~1.0.3",
+        "librechart": ">=0.5.0",
+        "moment": "^2.29.1",
+        "react": "16.13.1",
+        "react-dom": "16.13.1",
+        "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+        "react-native-gesture-handler": "~1.8.0",
+        "react-native-paper": "^4.7.2",
+        "react-native-safe-area-context": "3.1.9",
+        "react-native-screens": "~2.15.2",
+        "react-native-svg": "12.1.0",
+        "react-native-web": "~0.13.12",
+        "react-native-webview": "11.0.0",
+        "react-remove-scroll": "^2.4.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0",
+        "@types/react-dom": "~16.9.8",
+        "@types/react-native": "~0.63.2",
+        "typescript": "~4.0.0"
+    }
 }

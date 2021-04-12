@@ -6,78 +6,76 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
-import {
-    Button,
-} from 'react-native-paper';
-import {
-    Colors,
-    Chart,
-    LineDataSource,
-    ChartLayout,
-} from 'librechart';
+import { Button } from 'react-native-paper';
+import { Colors, Chart, LineDataSource, ChartLayout } from 'librechart';
 
 const kInitialScale = 50;
 
 export default function ChartDemo() {
     const chartRef = React.useRef<Chart>(null);
-    const mainScale$ = React.useRef(new Animated.ValueXY({
-        x: kInitialScale,
-        y: -kInitialScale,
-    })).current;
+    const mainScale$ = React.useRef(
+        new Animated.ValueXY({
+            x: kInitialScale,
+            y: -kInitialScale,
+        }),
+    ).current;
 
-    const [chartLayout] = React.useState(() => new ChartLayout({
-        plots: [
-            {
-                offset: { x: 1, y: 1 },
-                scale: mainScale$,
-                anchor: { x: 0, y: 0},
-                dataSources: [
-                    new LineDataSource({
-                        data: [
-                            [0, 0],
-                            [1, 1.2],
-                            [2, 1],
-                            [5, 4],
-                            [10, 11],
-                            [20, 24],
-                            [30, 20],
-                            [100, 90],
-                            [200, 240],
-                            [300, 100],
+    const [chartLayout] = React.useState(
+        () =>
+            new ChartLayout({
+                plots: [
+                    {
+                        offset: { x: 1, y: 1 },
+                        scale: mainScale$,
+                        anchor: { x: 0, y: 0 },
+                        dataSources: [
+                            new LineDataSource({
+                                data: [
+                                    [0, 0],
+                                    [1, 1.2],
+                                    [2, 1],
+                                    [5, 4],
+                                    [10, 11],
+                                    [20, 24],
+                                    [30, 20],
+                                    [100, 90],
+                                    [200, 240],
+                                    [300, 100],
+                                ],
+                                transform: p => ({
+                                    x: p[0],
+                                    y: p[1],
+                                }),
+                                style: {
+                                    pointInnerRadius: 2.5,
+                                    pointOuterRadius: 4.5,
+                                    strokeWidth: 2,
+                                    strokeColor: Colors.indigo700,
+                                    pointInnerColor: Colors.white,
+                                },
+                                // itemStyle: item => {
+                                //     if (item[1] < 10) {
+                                //         return { strokeColor: Colors.indigo700 };
+                                //     } else if (item[1] < 100) {
+                                //         return { strokeColor: Colors.yellow600 };
+                                //     } else {
+                                //         return { strokeColor: Colors.deepOrange600 };
+                                //     }
+                                // },
+                            }),
                         ],
-                        transform: p => ({
-                            x: p[0],
-                            y: p[1],
-                        }),
-                        style: {
-                            pointInnerRadius: 2.5,
-                            pointOuterRadius: 4.5,
-                            strokeWidth: 2,
-                            strokeColor: Colors.indigo700,
-                            pointInnerColor: Colors.white,
+                        axes: {
+                            bottomAxis: true,
+                            leftAxis: true,
                         },
-                        // itemStyle: item => {
-                        //     if (item[1] < 10) {
-                        //         return { strokeColor: Colors.indigo700 };
-                        //     } else if (item[1] < 100) {
-                        //         return { strokeColor: Colors.yellow600 };
-                        //     } else {
-                        //         return { strokeColor: Colors.deepOrange600 };
-                        //     }
-                        // },
-                    }),
+                        grid: {
+                            horizontal: true,
+                            vertical: true,
+                        },
+                    },
                 ],
-                axes: {
-                    bottomAxis: {},
-                    leftAxis: {},
-                },
-                grid: {
-                    horizontal: true,
-                    vertical: true,
-                },
-            },
-        ],
-    }));
+            }),
+    );
 
     const applyScale = React.useCallback((coef: number) => {
         let animation = Animated.parallel([
@@ -89,20 +87,16 @@ export default function ChartDemo() {
                 duration: 400,
                 useNativeDriver: false,
             }),
-        ])
+        ]);
         animation.start();
         return () => animation.stop();
     }, []);
 
     return (
         <SafeAreaView style={styles.container}>
-            <Chart
-                ref={chartRef}
-                layout={chartLayout}
-                style={styles.chart}
-            />
+            <Chart ref={chartRef} layout={chartLayout} style={styles.chart} />
             <View style={styles.toolbar}>
-                <Button onPress={() => applyScale(1/1.6)}>Scale –</Button>
+                <Button onPress={() => applyScale(1 / 1.6)}>Scale –</Button>
                 <Button onPress={() => applyScale(1.6)}>Scale +</Button>
             </View>
         </SafeAreaView>
@@ -125,5 +119,5 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         borderColor: 'gray',
         borderTopWidth: 1,
-    }
+    },
 });

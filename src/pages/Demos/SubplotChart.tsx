@@ -95,7 +95,7 @@ export default function ChartDemo() {
                         ],
                         axes: {
                             // topAxis,
-                            // leftAxis: {},
+                            // leftAxis: true,
                             rightAxis,
                             // bottomAxis,
                         },
@@ -115,7 +115,8 @@ export default function ChartDemo() {
                             controller: new FixedScaleController({
                                 min: 0,
                                 max: 1,
-                                viewPaddingRel: 0.1,
+                                contentPaddingAbs: 1,
+                                // viewPaddingRel: 0.1,
                             }),
                         }),
                         verticalPanEnabled: false,
@@ -175,7 +176,7 @@ export default function ChartDemo() {
                         ],
                         axes: {
                             bottomAxis,
-                            rightAxis: {},
+                            rightAxis: true,
                         },
                         grid: {
                             vertical: true,
