@@ -25,12 +25,30 @@ const bottomAxis = new Axis({ axisType: 'bottomAxis' });
 const topRightAxis = new Axis({ axisType: 'rightAxis' });
 const bottomRightAxis = new Axis({
     axisType: 'rightAxis',
-    getTickLabel: tick =>
-        ({
-            '0': 'A',
-            '1': 'B',
-            '2': 'C',
-        }[String(tick.value)] || ''),
+    getTickLabel: tick => ({ style, ...props }: any) => {
+        if (tick.value < 0 || tick.value > 2) {
+            return null;
+        }
+        return (
+            <View
+                {...props}
+                style={[
+                    style,
+                    {
+                        width: 16,
+                        height: 16,
+                        borderRadius: 8,
+                        backgroundColor:
+                            {
+                                '0': Colors.red700,
+                                '1': Colors.blue700,
+                                '2': Colors.green700,
+                            }[String(tick.value)] || Colors.grey700,
+                    },
+                ]}
+            />
+        );
+    },
 });
 topRightAxis.syncThickness(bottomRightAxis);
 
@@ -151,9 +169,16 @@ export default function ChartDemo() {
                             style: {
                                 strokeColor: Colors.red700,
                                 strokeWidth: 4,
-                                fillColor: Colors.red700,
                                 cornerRadius: 4,
                             },
+                            itemStyle: p => ({
+                                strokeColor:
+                                    {
+                                        '0': Colors.red700,
+                                        '1': Colors.blue700,
+                                        '2': Colors.green700,
+                                    }[String(p[1])] || Colors.grey700,
+                            }),
                         }),
                     ],
                     axes: {
