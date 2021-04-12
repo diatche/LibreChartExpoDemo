@@ -21,9 +21,18 @@ import {
 const kInitialYScale = 50;
 const kInitialXScale = 50;
 
-// const topAxis = new DateAxis({ axisType: 'topAxis' });
 const bottomAxis = new Axis({ axisType: 'bottomAxis' });
-const rightAxis = new Axis({ axisType: 'rightAxis' });
+const topRightAxis = new Axis({ axisType: 'rightAxis' });
+const bottomRightAxis = new Axis({
+    axisType: 'rightAxis',
+    getTickLabel: tick =>
+        ({
+            '0': 'A',
+            '1': 'B',
+            '2': 'C',
+        }[String(tick.value)] || ''),
+});
+topRightAxis.syncThickness(bottomRightAxis);
 
 const xScaleLayout = new ScaleLayout();
 
@@ -44,147 +53,120 @@ export default function ChartDemo() {
         }),
     ).current;
 
-    const [chartLayout] = React.useState(
-        () =>
-            new ChartLayout({
-                rowHeights: [
-                    { flex: 3 },
-                    { flex: 1 },
-                    // 200,
-                ],
-                plots: [
-                    {
-                        offset: { x: xOffset$, y: 1 },
-                        viewOffset: { x: xViewOffset$ },
-                        // ownsViewOffset: true,
-                        scale: mainScale$,
-                        anchor: { x: 0.5, y: 0 },
-                        xLayout: xScaleLayout,
-                        dataSources: [
-                            new LineDataSource({
-                                data: [
-                                    [0, 0],
-                                    [1, 1.2],
-                                    [2, 1],
-                                    [5, 4],
-                                    [10, 11],
-                                    [20, 24],
-                                    [30, 20],
-                                    [100, 90],
-                                    [200, 240],
-                                    [300, 100],
-                                ],
-                                transform: p => ({
-                                    x: p[0],
-                                    y: p[1],
-                                    // style: {
-                                    //     pointInnerRadius: Math.log(p[1] + 1) + 2,
-                                    //     pointOuterRadius: Math.log(p[1] + 1) + 4,
-                                    // }
-                                }),
-                                style: {
-                                    // curve: 'monotoneX',
-                                    pointInnerRadius: 2.5,
-                                    pointOuterRadius: 4.5,
-                                    strokeWidth: 2,
-                                    // strokeDashArray: [2, 4],
-                                    strokeColor: Colors.indigo700,
-                                    pointInnerColor: Colors.white,
-                                },
+    const [chartLayout] = React.useState(() => {
+        return new ChartLayout({
+            rowHeights: [
+                { flex: 3 },
+                { flex: 1 },
+                // 200,
+            ],
+            plots: [
+                {
+                    offset: { x: xOffset$, y: 1 },
+                    viewOffset: { x: xViewOffset$ },
+                    // ownsViewOffset: true,
+                    scale: mainScale$,
+                    anchor: { x: 0.5, y: 0 },
+                    xLayout: xScaleLayout,
+                    dataSources: [
+                        new LineDataSource({
+                            data: [
+                                [0, 0],
+                                [1, 1.2],
+                                [2, 1],
+                                [5, 4],
+                                [10, 11],
+                                [20, 24],
+                                [30, 20],
+                                [100, 90],
+                                [200, 240],
+                                [300, 100],
+                            ],
+                            transform: p => ({
+                                x: p[0],
+                                y: p[1],
+                                // style: {
+                                //     pointInnerRadius: Math.log(p[1] + 1) + 2,
+                                //     pointOuterRadius: Math.log(p[1] + 1) + 4,
+                                // }
                             }),
-                        ],
-                        axes: {
-                            // topAxis,
-                            // leftAxis: true,
-                            rightAxis,
-                            // bottomAxis,
-                        },
-                        grid: {
-                            horizontal: true,
-                            vertical: true,
-                        },
-                    },
-                    {
-                        offset: { x: xOffset$ },
-                        viewOffset: { x: xViewOffset$ },
-                        // ownsViewOffset: { x: false, y: true },
-                        scale: secondaryScale$,
-                        anchor: { x: 0.5, y: 0 },
-                        xLayout: xScaleLayout,
-                        yLayout: new ScaleLayout({
-                            controller: new FixedScaleController({
-                                min: 0,
-                                max: 1,
-                                contentPaddingAbs: 1,
-                                // viewPaddingRel: 0.1,
-                            }),
+                            style: {
+                                // curve: 'monotoneX',
+                                pointInnerRadius: 2.5,
+                                pointOuterRadius: 4.5,
+                                strokeWidth: 2,
+                                // strokeDashArray: [2, 4],
+                                strokeColor: Colors.indigo700,
+                                pointInnerColor: Colors.white,
+                            },
                         }),
-                        verticalPanEnabled: false,
-                        dataSources: [
-                            new RectDataSource({
-                                data: [
-                                    [-2, 0, 1],
-                                    [-1, 1, 1],
-                                    [0, 0, 1],
-                                    [1, 1, 1],
-                                    [1.5, 0.5, 1],
-                                    [7, 0.5, 1],
-                                    [8, 0.25, 1],
-                                    [9, 0.75, 1],
-                                    [10, 0.25, 1],
-                                    [11, 0.75, 1],
-                                ],
-                                transform: p => ({
-                                    x: p[0],
-                                    y: p[1],
-                                    x2: p[0] + p[2],
-                                    y2: p[1],
-                                }),
-                                style: {
-                                    strokeColor: Colors.red700,
-                                    strokeWidth: 4,
-                                    fillColor: Colors.red700,
-                                    cornerRadius: 4,
-                                },
-                            }),
-                            // new LineDataSource({
-                            //     data: [
-                            //         [-2, 0],
-                            //         [-1, 1],
-                            //         [0, 0],
-                            //         [1, 1],
-                            //         [1.5, 0.5],
-                            //         [7, 0.5],
-                            //         [8, 0.25],
-                            //         [9, 0.75],
-                            //         [10, 0.25],
-                            //         [11, 0.75],
-                            //     ],
-                            //     transform: p => ({
-                            //         x: kOriginDate.clone().add(p[0], 'days'),
-                            //         y: p[1],
-                            //     }),
-                            //     style: {
-                            //         // curve: 'monotoneX',
-                            //         pointInnerRadius: 2.5,
-                            //         pointOuterRadius: 4.5,
-                            //         strokeWidth: 2,
-                            //         strokeColor: Colors.red700,
-                            //         pointInnerColor: Colors.white,
-                            //     }
-                            // }),
-                        ],
-                        axes: {
-                            bottomAxis,
-                            rightAxis: true,
-                        },
-                        grid: {
-                            vertical: true,
-                        },
+                    ],
+                    axes: {
+                        // topAxis,
+                        // leftAxis: true,
+                        rightAxis: topRightAxis,
+                        // bottomAxis,
                     },
-                ],
-            }),
-    );
+                    grid: {
+                        horizontal: true,
+                        vertical: true,
+                    },
+                },
+                {
+                    offset: { x: xOffset$ },
+                    viewOffset: { x: xViewOffset$ },
+                    // ownsViewOffset: { x: false, y: true },
+                    scale: secondaryScale$,
+                    anchor: { x: 0.5, y: 0 },
+                    xLayout: xScaleLayout,
+                    yLayout: new ScaleLayout({
+                        controller: new FixedScaleController({
+                            min: 0,
+                            max: 2,
+                            contentPaddingAbs: 1,
+                            // viewPaddingRel: 0.1,
+                        }),
+                    }),
+                    verticalPanEnabled: false,
+                    dataSources: [
+                        new RectDataSource({
+                            data: [
+                                [-2, 0, 1],
+                                [-1, 2, 1],
+                                [0, 0, 1],
+                                [1, 2, 1],
+                                [1.5, 1, 1],
+                                [7, 1, 1],
+                                [8, 0, 1],
+                                [9, 2, 1],
+                                [10, 0, 1],
+                                [11, 1, 1],
+                            ],
+                            transform: p => ({
+                                x: p[0],
+                                y: p[1],
+                                x2: p[0] + p[2],
+                                y2: p[1],
+                            }),
+                            style: {
+                                strokeColor: Colors.red700,
+                                strokeWidth: 4,
+                                fillColor: Colors.red700,
+                                cornerRadius: 4,
+                            },
+                        }),
+                    ],
+                    axes: {
+                        bottomAxis,
+                        rightAxis: bottomRightAxis,
+                    },
+                    grid: {
+                        vertical: true,
+                    },
+                },
+            ],
+        });
+    });
 
     const applyScale = React.useCallback((coef: number) => {
         let animation = Animated.parallel([
