@@ -16,6 +16,7 @@ const Menu = ({ navigation }: MenuProps) => {
                 { id: 'AutoScaleLineChart', title: 'Auto Scale Line Chart' },
                 { id: 'DateChart', title: 'Date Chart' },
                 { id: 'SubplotChart', title: 'Subplot Chart' },
+                { id: 'LineLabelChart', title: 'Line Label Chart' },
             ]}
             renderItem={({ item }) => (
                 <Button

@@ -8,6 +8,7 @@ import DateChart from './Demos/DateChart';
 import { MainStackList } from './types';
 import AutoScaleLineChart from './Demos/AutoScaleLineChart';
 import SubplotChart from './Demos/SubplotChart';
+import LineLabelChart from './Demos/LineLabelChart';
 
 const MainStack = createStackNavigator<MainStackList>();
 
@@ -28,6 +29,7 @@ const Main = () => (
         />
         <MainStack.Screen name='DateChart' component={DateChart} />
         <MainStack.Screen name='SubplotChart' component={SubplotChart} />
+        <MainStack.Screen name='LineLabelChart' component={LineLabelChart} />
     </MainStack.Navigator>
 );
 
