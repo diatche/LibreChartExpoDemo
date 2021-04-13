@@ -1926,6 +1926,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@ungap/weakrefs@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@ungap/weakrefs/-/weakrefs-0.2.0.tgz#cbc3e92ca1d26579736313a210b8d7044c30f009"
+  integrity sha512-6MGYS+dIJG9yzI2j54jwkZZ5sobysMyMVbvQPfDlxBdVNI0OGgbePMNooosUnoYb9YgaJaQ52L45+0T6huIuVA==
+
 "@unimodules/core@~6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-6.0.0.tgz#c76ca5ca92128a059c62bb0c24d0372aaf908408"
@@ -4395,14 +4400,15 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-librechart@>=0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.5.0.tgz#29cde5a33341c04d959356307ff7a87ace060491"
-  integrity sha512-OMzk00ry7FmEC4ZM50a8RMRVgiHKxbavUbHxNKw7OQqvvXsKaEU59A+iGAm2Nk4FpUuVDf6ccZMaPoqSSNOuAA==
+librechart@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.6.0.tgz#416a32a26839bb6d86eb109afeb3bd64492a5d76"
+  integrity sha512-6+2nlJ80pPcgczPIhQxPBOxkJ0hBezZzxLK30ffNr+QzdXCn3W2pSrtunz0it5Wbt7g80KomKZoAyR5abfKp0A==
   dependencies:
     "@types/d3-shape" "^2.0.0"
     "@types/lodash.debounce" "^4.0.6"
     "@types/lodash.ismatchwith" "^4.4.6"
+    "@ungap/weakrefs" "^0.2.0"
     d3-shape "^2.0.0"
     lodash.debounce "^4.0.8"
     lodash.ismatchwith "^4.4.0"
