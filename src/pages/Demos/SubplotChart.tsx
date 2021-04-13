@@ -21,12 +21,14 @@ import {
 const kInitialYScale = 50;
 const kInitialXScale = 50;
 
+const kSecondaryAxisLabelSize = 16;
+
 const bottomAxis = new Axis({ axisType: 'bottomAxis' });
 const topRightAxis = new Axis({ axisType: 'rightAxis' });
 const bottomRightAxis = new Axis({
     axisType: 'rightAxis',
     getTickLabel: tick => ({ style, ...props }: any) => {
-        if (tick.value < 0 || tick.value > 2) {
+        if (![0, 1, 2].includes(tick.value)) {
             return null;
         }
         return (
@@ -35,9 +37,9 @@ const bottomRightAxis = new Axis({
                 style={[
                     style,
                     {
-                        width: 16,
-                        height: 16,
-                        borderRadius: 8,
+                        width: kSecondaryAxisLabelSize,
+                        height: kSecondaryAxisLabelSize,
+                        borderRadius: kSecondaryAxisLabelSize / 2,
                         backgroundColor:
                             {
                                 '0': Colors.red700,
@@ -137,7 +139,10 @@ export default function ChartDemo() {
                     scale: secondaryScale$,
                     anchor: { x: 0.5, y: 0 },
                     xLayout: xScaleLayout,
-                    yLayout: new ScaleLayout({
+                    yLayout: new ScaleLayout<number>({
+                        style: {
+                            majorGridLineDistanceMin: kSecondaryAxisLabelSize,
+                        },
                         controller: new FixedScaleController({
                             min: 0,
                             max: 2,
