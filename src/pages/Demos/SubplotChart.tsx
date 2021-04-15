@@ -23,9 +23,15 @@ const kInitialXScale = 50;
 
 const kSecondaryAxisLabelSize = 16;
 
+const kSubColors: { [y: string]: string } = {
+    '0': Colors.red700,
+    '1': Colors.blue700,
+    '2': Colors.green700,
+};
+
 const bottomAxis = new Axis({ axisType: 'bottomAxis' });
 const topRightAxis = new Axis({ axisType: 'rightAxis' });
-const bottomRightAxis = new Axis({
+const bottomRightAxis = new Axis<number, number>({
     axisType: 'rightAxis',
     getTickLabel: tick => ({ style, ...props }: any) => {
         if (![0, 1, 2].includes(tick.value)) {
@@ -41,11 +47,7 @@ const bottomRightAxis = new Axis({
                         height: kSecondaryAxisLabelSize,
                         borderRadius: kSecondaryAxisLabelSize / 2,
                         backgroundColor:
-                            {
-                                '0': Colors.red700,
-                                '1': Colors.blue700,
-                                '2': Colors.green700,
-                            }[String(tick.value)] || Colors.grey700,
+                            kSubColors[String(tick.value)] || Colors.grey700,
                     },
                 ]}
             />
@@ -64,13 +66,13 @@ export default function ChartDemo() {
         new Animated.ValueXY({
             x: kInitialXScale,
             y: -kInitialYScale,
-        }),
+        })
     ).current;
     const secondaryScale$ = React.useRef(
         new Animated.ValueXY({
             x: mainScale$.x,
             y: new Animated.Value(-kInitialYScale),
-        }),
+        })
     ).current;
 
     const [chartLayout] = React.useState(() => {
@@ -178,11 +180,7 @@ export default function ChartDemo() {
                             },
                             itemStyle: p => ({
                                 strokeColor:
-                                    {
-                                        '0': Colors.red700,
-                                        '1': Colors.blue700,
-                                        '2': Colors.green700,
-                                    }[String(p[1])] || Colors.grey700,
+                                    kSubColors[String(p[1])] || Colors.grey700,
                             }),
                         }),
                     ],

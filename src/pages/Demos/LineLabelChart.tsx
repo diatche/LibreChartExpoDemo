@@ -23,7 +23,7 @@ export default function ChartDemo() {
         new Animated.ValueXY({
             x: kInitialScale,
             y: -kInitialScale,
-        }),
+        })
     ).current;
 
     const [chartLayout] = React.useState(() => {
@@ -66,13 +66,26 @@ export default function ChartDemo() {
                                 return `(${p[0]}, ${p[1]})`;
                             },
                             style: {
-                                viewOffset: { y: -20 },
+                                align: { y: 'bottom' },
+                                viewOffset: { y: -10 },
                             },
                         }),
                     ],
                     axes: {
+                        // topAxis: {
+                        //     style: { labelStyle: { align: { x: 'right' } } },
+                        // },
                         bottomAxis: true,
+                        // bottomAxis: {
+                        //     style: { labelStyle: { align: { x: 'left' } } },
+                        // },
                         leftAxis: true,
+                        // leftAxis: {
+                        //     style: { labelStyle: { align: { y: 'top' } } },
+                        // },
+                        // rightAxis: {
+                        //     style: { labelStyle: { align: { y: 'bottom' } } },
+                        // },
                     },
                     grid: {
                         horizontal: true,
