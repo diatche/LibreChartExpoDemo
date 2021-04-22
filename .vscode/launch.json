@@ -10,6 +10,14 @@
             "name": "Debug Web",
             "url": "http://localhost:19006",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach to packager",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnative",
+            "request": "attach",
+            "port": "19000",
+            "sourceMaps": true
         }
     ]
 }
