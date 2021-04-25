@@ -67,7 +67,11 @@ export default function ChartDemo() {
                             },
                             style: {
                                 align: { y: 'bottom' },
-                                viewOffset: { y: -10 },
+                                viewLayout: {
+                                    offset: { y: -10 },
+                                    size: { x: 100, y: 50 },
+                                    anchor: { x: 0.5, y: 0 },
+                                },
                             },
                         }),
                     ],
