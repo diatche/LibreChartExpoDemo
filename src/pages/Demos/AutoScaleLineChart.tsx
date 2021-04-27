@@ -26,7 +26,7 @@ export default function ChartDemo() {
         new Animated.ValueXY({
             x: kInitialScale,
             y: -kInitialScale,
-        }),
+        })
     ).current;
 
     const [chartLayout] = React.useState(
@@ -34,17 +34,14 @@ export default function ChartDemo() {
             new ChartLayout({
                 plots: [
                     {
-                        offset: { x: 1 },
                         scale: mainScale$,
-                        anchor: { x: 0, y: 0 },
                         yLayout: new ScaleLayout({
                             controller: new AutoScaleController({
-                                anchor: 0,
                                 viewPaddingAbs: [10, 10],
                                 hysteresis: Hysteresis.withScale(
                                     new LinearScale({
                                         constraints: { maxCount: 5 },
-                                    }),
+                                    })
                                 ),
                             }),
                         }),
@@ -95,7 +92,7 @@ export default function ChartDemo() {
                         },
                     },
                 ],
-            }),
+            })
     );
 
     const applyScale = React.useCallback((coef: number) => {
