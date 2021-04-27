@@ -3165,10 +3165,10 @@ eventemitter3@^3.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
-evergrid@~0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/evergrid/-/evergrid-0.1.0.tgz#429900afa6289e14f34c54775e537846be2d92fb"
-  integrity sha512-+zo6amZIhZGwWeo9CdoM3phYfPbV9yVG992+1IRspLeZRm8jzUCOPRU6VlhM6bU3tS9oLS+cEoujjSskTGOoHg==
+evergrid@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/evergrid/-/evergrid-0.2.0.tgz#b600602d8469d3a2a367ba9801993edda4a2a5a8"
+  integrity sha512-QAz6DUYmG86mtu10t+57/zl9yljou2EES+kgVQjRc4o9n/1xWauLJDuIGBoIBeEP1HdM2aCtgPvwZaf1VU2YqA==
 
 exec-sh@^0.3.2:
   version "0.3.6"
@@ -4400,10 +4400,10 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-librechart@~0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.8.1.tgz#b4e12d80777d57fb572af52a0b8d498008952036"
-  integrity sha512-Xg6ySBB+SEpE+/2Q1crLlSXdxePPUgPUic8U4dKGeG9Eyyul46v61obEgkpuNZnsSJQmaU/TrTpSXgNtd23XUw==
+librechart@~0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.9.0.tgz#b0b58911485ed4dc8c95f9bd6a0e29fc2b8ae922"
+  integrity sha512-GtAqoVZIXR6UTqFtFCgrQSTxNW46WEouw+YHmeR7kzJ4LNMAlnOpNe9PlMeamc6nsxikR+/xNRjYmX1lW3pUEQ==
   dependencies:
     "@types/d3-shape" "^2.0.0"
     "@types/lodash.debounce" "^4.0.6"
