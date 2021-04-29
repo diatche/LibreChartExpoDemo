@@ -16,6 +16,7 @@ import {
     ChartLayout,
     RectDataSource,
     FixedScaleController,
+    PlotLayout,
 } from 'librechart';
 
 const kInitialYScale = 50;
@@ -60,8 +61,6 @@ const xScaleLayout = new ScaleLayout();
 
 export default function ChartDemo() {
     const chartRef = React.useRef<Chart>(null);
-    const xOffset$ = React.useRef(new Animated.Value(-5)).current;
-    const xViewOffset$ = React.useRef(new Animated.Value(0)).current;
     const mainScale$ = React.useRef(
         new Animated.ValueXY({
             x: kInitialXScale,
@@ -75,6 +74,57 @@ export default function ChartDemo() {
         })
     ).current;
 
+    const mainPlot = new PlotLayout({
+        offset: { x: -5, y: 1 },
+        // ownsViewOffset: true,
+        scale: mainScale$,
+        anchor: { x: 0.5, y: 0 },
+        xLayout: xScaleLayout,
+        dataSources: [
+            new LineDataSource({
+                data: [
+                    [0, 0],
+                    [1, 1.2],
+                    [2, 1],
+                    [5, 4],
+                    [10, 11],
+                    [20, 24],
+                    [30, 20],
+                    [100, 90],
+                    [200, 240],
+                    [300, 100],
+                ],
+                transform: p => ({
+                    x: p[0],
+                    y: p[1],
+                    // style: {
+                    //     pointInnerRadius: Math.log(p[1] + 1) + 2,
+                    //     pointOuterRadius: Math.log(p[1] + 1) + 4,
+                    // }
+                }),
+                style: {
+                    // curve: 'monotoneX',
+                    pointInnerRadius: 2.5,
+                    pointOuterRadius: 4.5,
+                    strokeWidth: 2,
+                    // strokeDashArray: [2, 4],
+                    strokeColor: Colors.indigo700,
+                    pointInnerColor: Colors.white,
+                },
+            }),
+        ],
+        axes: {
+            // topAxis,
+            // leftAxis: true,
+            rightAxis: topRightAxis,
+            // bottomAxis,
+        },
+        grid: {
+            horizontal: true,
+            vertical: true,
+        },
+    });
+
     const [chartLayout] = React.useState(() => {
         return new ChartLayout({
             rowHeights: [
@@ -83,61 +133,9 @@ export default function ChartDemo() {
                 // 200,
             ],
             plots: [
+                mainPlot,
                 {
-                    offset: { x: xOffset$, y: 1 },
-                    viewOffset: { x: xViewOffset$ },
-                    // ownsViewOffset: true,
-                    scale: mainScale$,
-                    anchor: { x: 0.5, y: 0 },
-                    xLayout: xScaleLayout,
-                    dataSources: [
-                        new LineDataSource({
-                            data: [
-                                [0, 0],
-                                [1, 1.2],
-                                [2, 1],
-                                [5, 4],
-                                [10, 11],
-                                [20, 24],
-                                [30, 20],
-                                [100, 90],
-                                [200, 240],
-                                [300, 100],
-                            ],
-                            transform: p => ({
-                                x: p[0],
-                                y: p[1],
-                                // style: {
-                                //     pointInnerRadius: Math.log(p[1] + 1) + 2,
-                                //     pointOuterRadius: Math.log(p[1] + 1) + 4,
-                                // }
-                            }),
-                            style: {
-                                // curve: 'monotoneX',
-                                pointInnerRadius: 2.5,
-                                pointOuterRadius: 4.5,
-                                strokeWidth: 2,
-                                // strokeDashArray: [2, 4],
-                                strokeColor: Colors.indigo700,
-                                pointInnerColor: Colors.white,
-                            },
-                        }),
-                    ],
-                    axes: {
-                        // topAxis,
-                        // leftAxis: true,
-                        rightAxis: topRightAxis,
-                        // bottomAxis,
-                    },
-                    grid: {
-                        horizontal: true,
-                        vertical: true,
-                    },
-                },
-                {
-                    offset: { x: xOffset$ },
-                    viewOffset: { x: xViewOffset$ },
-                    // ownsViewOffset: { x: false, y: true },
+                    linkedLayouts: [{ layout: mainPlot, axis: 'x' }],
                     scale: secondaryScale$,
                     anchor: { x: 0.5, y: 0 },
                     xLayout: xScaleLayout,

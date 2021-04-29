@@ -19,7 +19,7 @@
         "@react-navigation/stack": "^5.14.3",
         "@types/react": "~16.9.35",
         "decimal.js": "^10.2.1",
-        "evergrid": "~0.2.0",
+        "evergrid": "~0.3.0",
         "expo": "^40.0.0",
         "expo-status-bar": "~1.0.3",
         "librechart": "~0.9.0",
