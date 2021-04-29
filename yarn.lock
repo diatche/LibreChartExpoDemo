@@ -4403,10 +4403,10 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-librechart@~0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.9.0.tgz#b0b58911485ed4dc8c95f9bd6a0e29fc2b8ae922"
-  integrity sha512-GtAqoVZIXR6UTqFtFCgrQSTxNW46WEouw+YHmeR7kzJ4LNMAlnOpNe9PlMeamc6nsxikR+/xNRjYmX1lW3pUEQ==
+librechart@~0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/librechart/-/librechart-0.10.0.tgz#99717118c6e868c8978ae1d858a8b37a772f5d6c"
+  integrity sha512-cctg5xYw8HNpcNgkkavGnyJlZe9n2XR9cSGkRWWeVdHOZBTYnpXyKdR4ibvk6i+HDeSEgtuXv74f4tODmWb7rA==
   dependencies:
     "@types/d3-shape" "^2.0.0"
     "@types/lodash.debounce" "^4.0.6"
